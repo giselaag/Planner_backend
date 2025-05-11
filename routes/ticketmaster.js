@@ -6,7 +6,7 @@ const Plans = require("../models/plans");
 //https://app.ticketmaster.com/discovery/v2/events.json?apikey=tf69ta5IS6MOABhEbvFxoFAa1z07wtC0&city=New+York&startDateTime=2025-04-20T00:00:00Z&endDateTime=2025-04-20T23:59:59Z
 
 //GET CLASSIFICATIONS
-router.get("/ticketmaster/classifications", (req, res) => {
+router.get("/classifications", (req, res) => {
   fetch(
     `https://app.ticketmaster.com/discovery/v2/classifications.json?apikey=${TICKETMASTER_API_KEY}`
   )
@@ -34,7 +34,7 @@ router.get("/ticketmaster/classifications", (req, res) => {
 //GET EVENTS
 //classification example: Arts%20%26%20Theater
 //Nota: Asegúrate de URL-encodear los espacios y caracteres especiales (por ejemplo, "Arts & Theater" se convierte en Arts%20%26%20Theater).
-router.get("/ticketmaster/events", (req, res) => {
+router.get("/events", (req, res) => {
   const { classification, city, dateFrom, dateTo } = req.query;
   fetch(
     `https://app.ticketmaster.com/discovery/v2/events.json?apikey=${TICKETMASTER_API_KEY}&city=${city}&startDateTime=${dateFrom}&endDateTime=${dateTo}Z&classificationName=${classification}`

@@ -8,6 +8,8 @@ var logger = require('morgan');
 
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
+var mapsRouter = require('./routes/maps');
+var ticketmasterRouter = require('./routes/ticketmaster')
 
 var app = express();
 const cors = require('cors');
@@ -20,5 +22,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
+app.use('/maps', mapsRouter);
+app.use('/ticketmaster', ticketmasterRouter);
 
 module.exports = app;
